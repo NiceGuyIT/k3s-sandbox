@@ -5,10 +5,6 @@
   become: true
   gather_facts: true
   any_errors_fatal: true
-  pre_tasks:
-    - name: Pausing for 5 seconds...
-      ansible.builtin.pause:
-        seconds: 5
   tasks:
     - name: Locale
       block:
@@ -133,7 +129,7 @@
             state: permissive
             policy: targeted
           when: ansible_facts['distribution'] == 'Fedora'
-          notify: Reboot
+#      notify: Reboot
 
   handlers:
     - name: Reboot
